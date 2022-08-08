@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>タグについて</title>
+	<style type="text/css">
+		div{
+			border: solid 3px pink;
+			border-radius: 20px;
+			padding: 1em;
+		}
+		span{
+			background-color: yellow;
+
+		}
+		table{
+			width: 80vw;
+		}
+		td,th{
+			border: solid 2px gray;
+
+		}
+
+	</style>
+</head>
+<body>
+
+<h1>タグについて</h1>
+<ul>
+	<li>ブロック要素
+		<ul>
+			<li>div</li>
+			<li>見出し</li>
+			<li>段落</li>
+			<li>リスト</li>
+			<li>表</li>
+		</ul>
+	</li>
+	<li>インライン要素
+		<ul>
+			<li>span</li>
+			<li>改行</li>
+			<li>アンカー</li>
+			<li>イメージ</li>
+			<li>文字装飾</li>
+		</ul>
+	</li>
+</ul>
+
+<h2>ブロック要素</h2>
+<div>
+	<h3>div</h3>
+	<p>
+	要素をグループにするためのタグ<br>
+	文章の意味付けというニュアンスは無い<br>
+	分類不明だけどとりあえずまとめたいときに使う
+	</p>
+</div>
+
+<div>
+	<h3>見出し（ヘッダ）</h3>
+	<div>
+	<h1>メインタイトル</h1>
+	<h2>サブタイトル</h2>
+	<h3>さらにサブ</h3>
+	<h4>注目度低め</h4>
+	<h5>さらに低め</h5>
+	<h6>少しだけ注目してほしい</h6>
+	</div>
+</div>
+
+<div>
+	<h3>段落（パラグラフ）</h3>
+	<div>
+		<p>p　パラグラフ用のタグ
+		文章の意味のあるひとかたまり（ブロック）
+		を表す
+		</p>
+		<p>
+		パラグラフの中にパラグラフは埋め込めない
+		</p>
+	</div>
+</div>
+
+<div>
+	<h3>リスト</h3>
+	<div>
+		<h4>順序なしリスト</h4>
+		（アンオーダードリスト）
+		<ul>
+			<li>項目の出現順に深い意味はない時</li>
+			<li>箇条書きに使う</li>
+			<li>[子要素]は[リストアイテム]</li>
+		</ul>
+		<h4>順序付きリスト</h4>
+		<ol>
+			<li>項目の出現順に意味があるとき</li>
+			<li>番号が前に振られる</li>
+			<li>[子要素]は[リストアイテム]</li>
+		</ol>
+		<h4>定義リスト</h4>
+<!--
+		親要素:dlタグ
+		子要素:dt/ddタグ
+ -->
+		<dl>
+			<dt>定義/説明(define/description)</dt>
+			<dd>この用語についての説明書き</dd>
+			<dt>HTML</dt>
+			<dd>ハイパーテキストマークアップ言語</dd>
+			<dt>dtとは</dt>
+			<dd>用語(Term)の語を書く場所</dd>
+			<dt>ddとは</dt>
+			<dd>用語の意味/解説(description)を書く場所</dd>
+		</dl>
+	</div>
+</div>
+
+<div>
+<h4>表組（テーブル）</h4>
+<table>
+<!--
+tr: table row
+th: table header
+td: table data
+ -->
+	<tr>
+		<th>Aテーブルヘッダ</th>
+		<th>Bテーブルヘッダ</th>
+		<th>Cテーブルヘッダ</th>
+	</tr>
+	<tr>
+		<td>Aテーブルデータ</td>
+		<td>Bテーブルデータ</td>
+		<td>Cテーブルデータ</td>
+	</tr>
+</table>
+
+
+</div>
+
+
+
+<h2>インライン要素</h2>
+<div>
+	<h3>span</h3>
+	<p>要素のグループ化をする</p>
+	<p>文章の意味付けというニュアンスはない</p>
+	<p>とりあえずまとめたいときに使う</p>
+<div>
+	<span>span</span>はインライン要素。
+	そのため、<span>閉じた後も
+	続いて文字が出現する。</span>
+	ブロック要素の場合は、閉じたらそこで
+	必ず（表示的な）改行が入る。
+</div>
+</div>
+
+<div>
+	<h3>改行</h3>
+	<p>文章を途中で改行したい場合は<br />
+	brタグ
+	</p>
+	<p>HTMLドキュメント内で開業しても無視される
+	ため、<br />改行したい時はbrタグを入れる</p>
+</div>
+<div>
+	<h3>アンカー</h3>
+	<p>ハイパーリンクとしてマークしたいときに使う</p>
+	<div>
+		<a href="./index.html">初めのページ</a>へ<br />
+		<a href="index.html#anc">初めのページのリンク部分</a>へ<br />
+
+		<a href="index.html#anc">
+		<img src="img/icon_a.svg"/>
+		</a>
+		<!-- インライン要素であれば aタグに挟み込める -->
+
+	</div>
+</div>
+
+<div>
+	<h3>イメージ</h3>
+	<p>画像を埋め込みたいとき</p>
+	<p>インライン要素なので<img src="img/sample.png">
+	続きに文字を書くと横に続いて出てくる </p>
+	<p>
+		<img src="img/sample.jpeg">
+		<img src="img/sample.png">
+		<img src="img/icon_a.svg">
+	</p>
+</div>
+<div>
+<h3>文字装飾</h3>
+<strong>strong　強調</strong>
+<em>em  びみょうに斜体</em>になる
+<small>small  ｽﾓｰﾙｽﾓｰﾙｽﾓｰﾙ</small>
+色々あるよ
+
+<div>
+<code>System.out.println("test");</code>
+<p>code コード的な表記になる</p>
+</div>
+
+<!-- 成形済みドキュメントマークアップタグ：pre -->
+<pre><code>
+	System.out.println("test");
+	System.out.println("test");
+	System.out.println("test");
+	System.out.println("test");
+</code></pre>
+
+
+</div>
+
+
+
+
+
+</body>
+</html>
