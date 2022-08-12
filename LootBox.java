@@ -11,6 +11,7 @@ public class LootBox {
 		int r = 0;
 		int sr = 0;
 		int ssr = 0;
+		int cnt = 0; // 回した回数
 		int money = 0; // かかったお金
 		boolean mawasu = false; // trueならガチャ回す
 		
@@ -18,7 +19,7 @@ public class LootBox {
 		int[] gacha = new int[10];
 
 		System.out.println("10連ガチャ3000円");
-		System.out.println("10回目はSR以上確定だよ");
+		System.out.println("10回目はSR以上確定です");
 		System.out.println("１：回してみる");
 		int yesNo = scanner.nextInt();
 		
@@ -61,6 +62,7 @@ public class LootBox {
 					}
 				}
 			}
+			cnt ++;
 			money += 3000;
 			System.out.println("もう一度回す？");
 			System.out.println("1:回す　2:やめる");
@@ -73,8 +75,10 @@ public class LootBox {
 		//ループおわり
 		System.out.println("ガチャを回すことをやめました");
 		// 最終的な消費金額とガチャ結果
+		System.out.print(cnt + "0回のガチャで　");
 		System.out.println("かかったお金は " + money + "円");
 		System.out.println("レア度別の排出回数は…");
 		System.out.println(" N：" + n + "　R:" + r + "　SR：" + sr + "　SSR：" + ssr + " でした！");
+		System.out.println("ガチャはお金持ちの遊び！");
 	}
 }
