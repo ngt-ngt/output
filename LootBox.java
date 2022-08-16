@@ -1,3 +1,4 @@
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,10 +14,9 @@ public class LootBox {
 		int ssr = 0;
 		int cnt = 0; // 回した回数
 		int money = 0; // かかったお金
-		boolean mawasu = false; // trueなら1回だけガチャを回す
-		boolean mawasu10 = false; // trueなら10連ガチャ回す
 		int box = 0; // 犬種の判定に使う
 		String dog; // returnで戻ってきた文字列の受け取り用
+		int mawasu = 0; // 0じゃないならガチャが回る
 
 		// 10連用　10コ入れられる配列を用意する
 		int[] gacha = new int[10];
@@ -28,63 +28,29 @@ public class LootBox {
 
 		// 受け取った値が1なら単発 2なら10連でループさせる
 		if (yesNo == 1) {
-			mawasu = true;
+			mawasu = 1;
 		} else if (yesNo == 2) {
-			mawasu10 = true;
+			mawasu = 2;
 		}
-		
-		// 単発
-		while (mawasu == true) {
-			box = rand.nextInt(100);
-			// レア度
-			if (box >= 30) {
-				dog = dogsN(box = rand.nextInt(100));
-				System.out.println("N! 　　" + dog);
-				n++;
 
-			} else if (box >= 5) {
-				dog = dogsR(box = rand.nextInt(100));
-				System.out.println("R!  　" + dog);
-				r++;
+		//mawasuが0じゃないなら
+		while (mawasu != 0) {
 
-			} else if (box >= 1) {
-				dog = dogsSR(box = rand.nextInt(100));
-				System.out.println("SR!!  " + dog);
-				sr++;
-
-			} else {
-				dog = dogsSSR(box = rand.nextInt(100));
-				System.out.println("SSR!!!! " + dog);
-				ssr++;
-			}
-			cnt += 1;
-			money += 300;
-			System.out.println("もう一度回す？");
-			System.out.println("1:回す 2:やめる");
-			yesNo = scanner.nextInt();
-			if (yesNo == 2) {
-				mawasu = false;
-			}
-		}
-		
-		// 10連　mawasu10がtrueの間ループ
-		while (mawasu10 == true) {
-			// 配列に入れていく
-			for (int i = 0; i <= 9; i++) {
-				gacha[i] = rand.nextInt(100);
-				// System.out.print(gacha[i] + " ： "); //乱数の値が見たい時に表示する
+			// 単発　mawasuが1の時
+			while (mawasu == 1) {
+				box = rand.nextInt(100);
 				// レア度
-				if (gacha[i] >= 30) {
+				if (box >= 30) {
 					dog = dogsN(box = rand.nextInt(100));
 					System.out.println("N! 　　" + dog);
 					n++;
 
-				} else if (gacha[i] >= 5) {
+				} else if (box >= 5) {
 					dog = dogsR(box = rand.nextInt(100));
 					System.out.println("R!  　" + dog);
 					r++;
 
-				} else if (gacha[i] >= 1) {
+				} else if (box >= 1) {
 					dog = dogsSR(box = rand.nextInt(100));
 					System.out.println("SR!!  " + dog);
 					sr++;
@@ -95,12 +61,40 @@ public class LootBox {
 					ssr++;
 				}
 
-				if (i == 9) {
-					gacha[9] = rand.nextInt(100);
-					// System.out.print(gacha[i] + " ： ");
-					if (gacha[9] >= 1) {
+				cnt += 1;
+				money += 300;
+				System.out.println("もう一度回す？");
+				System.out.println("1:単発で回す 2:10連 0:やめる");
+				yesNo = scanner.nextInt();
+				if (yesNo == 1) {
+					mawasu = 1;
+				} else if (yesNo == 2) {
+					mawasu = 2;
+				} else {
+					mawasu = 0;
+				}
+			}
+
+			// 10連　inuが2の時
+			while (mawasu == 2) {
+				// 配列に入れていく
+				for (int i = 0; i <= 9; i++) {
+					gacha[i] = rand.nextInt(100);
+					// System.out.print(gacha[i] + " ： "); //乱数の値が見たい時に表示する
+					// レア度
+					if (gacha[i] >= 30) {
+						dog = dogsN(box = rand.nextInt(100));
+						System.out.println("N! 　　" + dog);
+						n++;
+
+					} else if (gacha[i] >= 5) {
+						dog = dogsR(box = rand.nextInt(100));
+						System.out.println("R!  　" + dog);
+						r++;
+
+					} else if (gacha[i] >= 1) {
 						dog = dogsSR(box = rand.nextInt(100));
-						System.out.println("SR!! " + dog);
+						System.out.println("SR!!  " + dog);
 						sr++;
 
 					} else {
@@ -108,20 +102,40 @@ public class LootBox {
 						System.out.println("SSR!!!! " + dog);
 						ssr++;
 					}
+
+					if (i == 9) {
+						gacha[9] = rand.nextInt(100);
+						// System.out.print(gacha[i] + " ： ");
+						if (gacha[9] >= 1) {
+							dog = dogsSR(box = rand.nextInt(100));
+							System.out.println("SR!! " + dog);
+							sr++;
+
+						} else {
+							dog = dogsSSR(box = rand.nextInt(100));
+							System.out.println("SSR!!!! " + dog);
+							ssr++;
+						}
+					}
 				}
-			}
+
 			cnt += 10;
 			money += 3000;
 			System.out.println("もう一度回す？");
-			System.out.println("1:回す 2:やめる");
+			System.out.println("1:単発で回す 2:10連 0:やめる");
 			yesNo = scanner.nextInt();
-			if (yesNo == 2) {
-				mawasu10 = false;
+			if (yesNo == 1) {
+				mawasu = 1;
+			} else if (yesNo == 2) {
+				mawasu = 2;
+			} else {
+				mawasu = 0;
 			}
+		}
 		}
 
 		// ループおわり
-		System.out.println("犬ガチャをやめました");
+		System.out.println("ガチャをやめました");
 		// 最終的な消費金額とガチャ結果
 		System.out.print(cnt + "回のガチャで　");
 		System.out.println("かかったお金は " + money + "円");
