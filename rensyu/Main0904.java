@@ -14,8 +14,8 @@ public class Main0904 {
 			word[i] = rnd.nextInt(7);
 		}		
 		
-		for (int i = 0; i <= r; i++) { 
 		char[] dog = {'チ','ワ','ポ','メ','ラ','ニ','ア','ン'};
+		for (int i = 0; i <= r; i++) { 
 		System.out.print(dog[word[i]]);
 		}
 
