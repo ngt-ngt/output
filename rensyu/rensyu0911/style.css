@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+/* 余白無し的な */
+body, h1, h2, p, form, input, ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+header {
+	background-color: #f5f5dc;
+  	height: 90px;
+  	display: flex;
+}
+
+.header-logo {
+  font-size: 36px;
+  padding: 20px 40px;
+}
+
+ul {
+  list-style: none; /* リスト横の点をなくす */
+}
+.header-list ul {
+  display: flex;
+}
+.header-list li {
+  padding: 33px 20px;
+}
+
+a {	/* タイトルとかの */
+  text-decoration: none;
+  color: #ffffff;
+}
+
+main {	/* mainの周辺の余白を作る */
+  padding: 100px 80px;
+}
+
+/* コピーコンテナーの中のh1 */
+.copy-container h1 {
+	color: #f5dce9;
+ 	font-size: 140px;
+}
+
+/* コピーコンテナーの中のh2 */
+.copy-container h2 {
+  font-size: 60px;
+}
+
+/*  コピーコンテナーの中のスパンだけ指定 */
+.copy-container span {	
+  color: #f53196;
+}
+/* コンテンツコンテナー */
+.contents-container {
+  margin-top: 100px;
+}
+/* 画像のとこ 横に並べたい */
+.contents-list {
+  display: flex;
+}
+/* 画像個別 */
+.contents-item {
+  margin-right: 40px;
+}
+
+/* セクションタイトル(お問い合わせの部分) */
+.section-title {
+  border-bottom: 2px solid #dee7ec;
+  font-size: 28px;
+  padding-bottom: 15px;
+  margin-bottom: 50px;
+}
+
+.contents-container2 {
+  margin-top: 100px;
+}
+.contents-container2 p{
+    font-size: 20px;
+    color: #ebdcf5;
+}
+
+
+footer {
+ 	background-color: #dcf5e9 ;
+  	height: 120px;
+  	padding: 40px;
+}
+footer li {
+  	padding: 10px 0px;
+}
