@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <img id="img" src="time1_asa.png" alt="">
+    <p>表示した時間によって上の画像が変化します（たぶん）</p>
+    <p>現在時刻は<span id="now"></span>です</p>
+    <p>詳しく書くと <span id="time"></span> です</p>
+    </div>
+    
+    <div>
+        <h4>----------------- 以下メモ -----------------</h4>
+        <p>ページが開かれた際に現在の時刻を取得している。<br>
+        取得した時刻が5時より前、または19時以降なら夜の画像を表示</p>
+        <img width="200px" src="bg_pattern4_yoru.png" alt="">
+        <p>時刻が9時より前、"なおかつ"5時以降なら朝(?)の画像を表示</p>
+        <img width="200px" src="bg_pattern1_aozora.png" alt="">
+        <p>時刻が16時より前、"なおかつ"9時以降なら昼の画像を表示</p>
+        <img width="200px" src="bg_pattern2_aozora.png" alt="">
+        <p>時刻が19時より前、"なおかつ"16時以降なら夕方の画像を表示</p>
+        <img width="200px" src="bg_pattern3_yuyake.png" alt="">
+
+    </div>
+    <small>これを応用してガチャなど作りたい。11/14
+    </small>
+    
+</body>
+
+<script>
+
+    const hour = new Date().getHours(); //時刻を取得
+    picChange();    // 関数の呼び出し
+    document.getElementById("time").textContent = new Date; // 時刻をテキストで表示（全部）
+    
+
+    const now = new Date();
+    const min = now.getMinutes();
+    const nowTime = `${hour}:${min}`
+    document.getElementById("now").textContent = nowTime; // 時刻をテキストで表示（時間と分だけ）
+
+
+
+    // 時刻によって画像を書き換える関数　呼び出さないと発動しない
+    function picChange(){
+        if(hour < 5 || hour >= 19){ // 夜
+            document.getElementById("img").src = "bg_pattern4_yoru.png";
+        } else if (hour < 9 && hour >= 5){ // 朝
+            document.getElementById("img").src = "bg_pattern1_aozora.png";
+        } else if (hour < 16 && hour >= 9){ // 昼
+            document.getElementById("img").src = "bg_pattern2_aozora.png";
+        } else if (hour < 19 && hour >= 16){ // 夕
+            document.getElementById("img").src = "bg_pattern3_yuyake.png";
+        }
+
+    }
+</script>
+
+</html>

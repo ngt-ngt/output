@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おみくじ</title>
+    <style>
+        body{ background-color: #FFF; }
+        #wrapper{
+            text-align: center;
+            background-color: #e0ebaf;
+            border-radius: 10px;
+            width: 600px;
+            padding: 20px 10px;
+            margin-left: 30%;
+        }
+        #comment{ font-size: 28px; }
+        #button{ 
+            background: #93ca76;
+            border: 0;
+            border-radius: 10px;
+            padding: 10px 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+    <h2 id="title">おみくじ</h2>
+
+            <img id="omikuji" width="200" src="aaa.png" alt="">
+            
+            <p id="comment">ボタンを押しておみくじを引こう！！！！</p>
+            
+            <div id="buttonWrapper">
+                <button id="button">引く</button>
+            </div>
+        </div>
+        <small>2022/11/15</small>
+<script>    
+    // ボタンが押されたら関数を呼び出し
+    document.getElementById("button").onclick = function () {
+
+        document.getElementById("title").textContent = "結果";
+        // ランダム
+        const number = Math.floor(Math.random() * 6);
+        const omikuji = document.getElementById("omikuji");
+        const comment = document.getElementById("comment");
+
+
+        switch(number){
+            case 0 :
+                omikuji.src = "omikuji_daikichi.png";
+                comment.textContent = "大吉！！！！！やったね！！！！！！！";
+                break;
+            case 1 :
+                omikuji.src = "omikuji_chuukichi.png";
+                comment.textContent = "中吉！！良し！！";
+                break;
+            case 2 :
+                omikuji.src = "omikuji_kichi.png";
+                comment.textContent = "吉！ラッキーかもしれない！";
+                break;
+            case 3 :
+                omikuji.src = "omikuji_syoukichi.png";
+                comment.textContent = "小吉。まあ良いんじゃないですか。";
+                break;
+            case 4 :
+                omikuji.src = "omikuji_kyou.png";
+                comment.textContent = "凶です。不運。";
+                break;
+            case 5 :
+                omikuji.src = "omikuji_daikyou.png";
+                comment.textContent = "大凶です。明日死ぬ。";
+                break;
+        }
+
+        // ボタンを非表示にする
+        //document.getElementById("buttonWrapper").style.visibility = "hidden";
+        // ボタンを無いものとする
+        document.getElementById('buttonWrapper').style.display = 'none'
+
+    }
+
+</script>
+</body>
+
+</html>

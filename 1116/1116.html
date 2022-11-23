@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ガチャ</title>
+    <style>
+        main{ text-align: center; }
+        #resultWrapper { 
+            margin: auto;
+            margin-top: 10px;
+            padding: 10px 0;
+            background-color: #FFF;
+            border: solid 4px #e0ebaf;
+            border-radius: 10px; 
+            height: 600px;
+            width: 800px;
+        }
+        #resultWrapper img{
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- ガチャを作りたい -->
+        <h1>犬ガチャ</h1>
+        <div id="buttonWrapper">
+            <img width="200" src="gachagacha_atari_man.png" alt="">
+            <p>お金のかからないガチャです。<br>
+            好きなだけ回して犬を獲得しよう。</p>
+        </div>
+        <button id="button">ガチャを回す</button>
+        <div id="resultWrapper">
+            <img width="100" id="rareImg" src="" alt="">
+            <img width="300" id="img1" src="" alt="">
+            <h2 id="dogTitle"></h2>
+        </div>
+
+
+    </main>
+    <script>
+        document.getElementById("resultWrapper").style.visibility = "hidden";
+        const rareImg = document.getElementById("rareImg");
+        
+        // 犬情報が入った多次元配列を作る。[0]に犬の種類名、[1]に画像名。
+        // Nの犬
+        let nDogs = [["ビションフリーゼ","dog_Bichon_Frise"],
+                    ["チワワ","dog_chihuahua"],
+                    ["ポメラニアン","dog_pomeranian"],
+                    ["ダックスフンド","dog_miniature_dachshund"],
+                    ["ミニチュアピンシャー","dog_miniature_pinscher"],
+                    ["シーズー","dog_shih_tzu"],
+                    ["パピヨン","dog_papillon"],
+                    ["ノーフォークテリア","dog_norfolk_errier"],
+                    ["チャウチャウ","dog_chow_chow"],
+                    ["ミニチュアシュナウザー","dog_miniature_schnauzer"],
+                    ["イタリアングレーハウンド","dog_italian_greyhound2"]];
+
+        // Rの犬
+        let rDogs = [["アメリカンコッカースパニエル","dog_american_cocker_spaniel"],
+                    ["バセットハウンド","dog_basset_hound"],
+                    ["ビーグル","dog_beagle"],
+                    ["ブリタニースパニエル","dog_brittany_spaniel"],
+                    ["コーギー","dog_corgi"],
+                    ["甲斐犬","dog_kaiken"],
+                    ["オールドイングリッシュシープドッグ","dog_old_english_sheepdog"],
+                    ["キャバリアキングチャールズスパニエル","dog_cavalier_king_charles_spaniel"],
+                    ["ボストンテリア","dog_boston_terrier"]];
+
+        // SRの犬
+        let srDogs = [["ボーダーコリー","dog_Border_Collie"],
+                    ["秋田犬","dog_akitainu"],
+                    ["ロットワイラー","dog_rottweiler"],
+                    ["ドーベルマン","dog_doberman"],
+                    ["ジャーマンシェパード","dog_german_shepherd"],
+                    ["ボクサー","dog_boxer"],
+                    ["バーニーズマウンテン","dog_bernese_mountain"],
+                    ["ボルゾイ","dog_borzoi"],
+                    ["ダルメシアン","dog_dalmatian"]];
+        
+        // SSRの犬
+        let ssrDogs = [["元犬","rakugo_motoinu"],
+                    ["グレートピレニーズ","dog_great_pyrenees"],
+                    ["土佐犬","dog_tosaken"],
+                    ["羽犬","fantsy_haneinu"]];
+
+
+        // ボタンが押されたら…
+        document.getElementById("button").onclick = function () {
+            document.getElementById('buttonWrapper').style.display = 'none'
+
+            // レア度の判定
+            const rare = Math.floor(Math.random() * 100);
+            if(rare >= 40){
+                rareImg.src = "mark_gacha1_normal.png";
+                n();
+            } else if (rare >= 15){
+                rareImg.src = "mark_gacha3_rare.png";
+                r();
+            } else if (rare >= 3){
+                rareImg.src = "mark_gacha5_secret_rare.png";
+                sr();
+            } else if (rare >= 0){
+                rareImg.src = "mark_gacha6_super_secret_rare.png";
+                ssr();
+            }
+            
+            // レア度別の排出判定                
+            function n(){
+                let gacha = Math.floor(Math.random() * nDogs.length);
+                let dog = nDogs[gacha][1];
+                
+                document.getElementById("img1").src = "n/" + dog + ".png";
+                document.getElementById("dogTitle").textContent = nDogs[gacha][0];
+            }
+            
+            function r(){
+                let gacha = Math.floor(Math.random() * rDogs.length);
+                let dog = rDogs[gacha][1];
+                
+                document.getElementById("img1").src = "r/" + dog + ".png";
+                document.getElementById("dogTitle").textContent = rDogs[gacha][0];
+            }
+            
+            function sr(){
+                let gacha = Math.floor(Math.random() * srDogs.length);
+                let dog = srDogs[gacha][1];
+                
+                document.getElementById("img1").src = "sr/" + dog + ".png";
+                document.getElementById("dogTitle").textContent = srDogs[gacha][0];
+            }
+            
+            function ssr(){
+                let gacha = Math.floor(Math.random() * ssrDogs.length);
+                let dog = ssrDogs[gacha][1];
+                
+                document.getElementById("img1").src = "ssr/" + dog + ".png";
+                document.getElementById("dogTitle").textContent = ssrDogs[gacha][0];
+            }
+            document.getElementById("resultWrapper").style.visibility = "visible";
+        }
+    </script>
+    </body>
+    </html>
